@@ -5,9 +5,11 @@
 	id="co.wensday"
 	author="Yi-Wen LIN"
 	summary="Helpers for debugging"
-	version="0.0"
+	version="1.0"
 	>
-    <header>include/BatchHelpers.h</header>
-    <includePath>include</includePath>	
+		<headerPattern>include/*.h</headerPattern>
+    
+    <includePath>include</includePath>
+    <includePath>src</includePath>
 </block>
 </cinder>
