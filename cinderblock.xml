@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+	name="Alfrid"
+	id="co.wensday"
+	author="Yi-Wen LIN"
+	summary="Helpers for debugging"
+	version="0.0"
+	>
+    <header>include/BatchHelpers.h</header>
+    <includePath>include</includePath>	
+</block>
+</cinder>
