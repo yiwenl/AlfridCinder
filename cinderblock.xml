@@ -10,7 +10,6 @@
 		<headerPattern>include/*.h</headerPattern>
     
     <includePath>include</includePath>
-    <includePath>src</includePath>
 </block>
 <template>templates/alfrid/template.xml</template>
 </cinder>
