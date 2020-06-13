@@ -2,7 +2,7 @@
 <cinder>
 <block
 	name="Alfrid"
-	id="co.wensday"
+	id="co.wensday.alfrid"
 	author="Yi-Wen LIN"
 	summary="Helpers for debugging"
 	version="1.0"
@@ -12,4 +12,5 @@
     <includePath>include</includePath>
     <includePath>src</includePath>
 </block>
+<template>templates/alfrid/template.xml</template>
 </cinder>
