@@ -14,6 +14,10 @@ namespace alfrid {
     private:
         float _value;
         float _target;
+        float _min;
+        float _max;
+        bool _hasSetLimit = false;
+
         
     public:
         float easing = 0.1;
@@ -27,15 +31,38 @@ namespace alfrid {
         
         
         void update() {
+            checkLimit();
             _value += (_target - _value) * easing;
         }
+
         
         void setTo(float mValue) {
             _target = _value = mValue;
         }
 
+
         void add(float mValue) {
             _target += mValue;
+        }
+
+
+        void limit(float min, float max) {
+            if(min > max) {
+                limit(max, min);
+                return;
+            }
+
+            _min = min;
+            _max = max;
+            _hasSetLimit = true;
+        }
+
+
+        void checkLimit() {
+            if(!_hasSetLimit) return;
+
+            _target = max(_min, _target);
+            _target = min(_max, _target);
         }
         
         
