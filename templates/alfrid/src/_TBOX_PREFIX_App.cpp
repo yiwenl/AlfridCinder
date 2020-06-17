@@ -2,8 +2,9 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Camera.h"
-#include "cinder/CameraUi.h"
+#include "cinder/params/Params.h"
 #include "BatchHelpers.h"
+#include "OrbitalControl.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -23,11 +24,15 @@ public:
 private:
 	// camera
 	CameraPersp			mCamera;
-	CameraUi			mCamUi;
+	OrbitalControl*     mOrbControl;
 
 	// helpers
 	BatchAxisRef		bAxis;
 	BatchGridDotsRef	bDots;
+
+	// controls
+    params::InterfaceGlRef mParams;
+    float fps = 0.0f;
 };
 
 void _TBOX_PREFIX_App::setup()
@@ -38,13 +43,19 @@ void _TBOX_PREFIX_App::setup()
 	setFrameRate(60.0f);
 
 	// camera
-	mCamera = CameraPersp(getWindowWidth(), getWindowHeight(), 75.0f, 0.1f, 10.0f);
+	mCamera = CameraPersp(getWindowWidth(), getWindowHeight(), 75.0f, 0.1f, 50.0f);
 	mCamera.lookAt(vec3(-2, 2, 5), vec3(0));
-	mCamUi = CameraUi(&mCamera, getWindow());
+	mOrbControl = new OrbitalControl(&mCamera, getWindow());
+	mOrbControl->rx->setValue(0.5);
+    mOrbControl->ry->setValue(0.5);
 
 	// helpers
 	bAxis = BatchAxis::create();
 	bDots = BatchGridDots::create();
+
+	// controls
+    mParams = params::InterfaceGl::create("Controls", vec2(200, 200));
+    mParams->addParam("FPS", &fps);
 }
 
 void _TBOX_PREFIX_App::keyDown( KeyEvent event )
@@ -60,7 +71,7 @@ void _TBOX_PREFIX_App::keyDown( KeyEvent event )
 
 void _TBOX_PREFIX_App::update()
 {
-
+	fps = getAverageFps();
 }
 
 void _TBOX_PREFIX_App::draw()
@@ -70,6 +81,8 @@ void _TBOX_PREFIX_App::draw()
     gl::setMatrices(mCamera);
 	bAxis->draw();
 	bDots->draw();
+
+	mParams->draw();
 }
 
 CINDER_APP( _TBOX_PREFIX_App, RendererGl )
