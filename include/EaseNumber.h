@@ -38,6 +38,12 @@ namespace alfrid {
         float getValue() {
             return _value;
         }
+
+
+        float getTargetValue() {
+            return _target;
+        }
+        
         
         void setValue(float mValue) {
             _target = mValue;
