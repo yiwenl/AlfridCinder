@@ -33,6 +33,10 @@ namespace alfrid {
         void setTo(float mValue) {
             _target = _value = mValue;
         }
+
+        void add(float mValue) {
+            _target += mValue;
+        }
         
         
         float getValue() {
@@ -43,7 +47,7 @@ namespace alfrid {
         float getTargetValue() {
             return _target;
         }
-        
+
         
         void setValue(float mValue) {
             _target = mValue;
