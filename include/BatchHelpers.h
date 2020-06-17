@@ -109,8 +109,6 @@ namespace alfrid {
         gl::GlslProgRef     mShader;
         
         void _init() {
-            console() << " Init Grid dots " << endl;
-            
             vector<vec3> points;
             
             for(int i = 0; i<NUM_DOTS; i++) {
