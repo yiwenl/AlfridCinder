@@ -3,7 +3,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/Camera.h"
 #include "cinder/params/Params.h"
-#include "BatchHelpers.h"
+#include "Helpers.h"
 #include "OrbitalControl.h"
 
 using namespace ci;
@@ -26,10 +26,6 @@ private:
 	CameraPersp			mCamera;
 	OrbitalControl*     mOrbControl;
 
-	// helpers
-	BatchAxisRef		bAxis;
-	BatchGridDotsRef	bDots;
-
 	// controls
     params::InterfaceGlRef mParams;
     float fps = 0.0f;
@@ -49,10 +45,6 @@ void _TBOX_PREFIX_App::setup()
 	mOrbControl->rx->setValue(0.5);
     mOrbControl->ry->setValue(0.5);
 
-	// helpers
-	bAxis = BatchAxis::create();
-	bDots = BatchGridDots::create();
-
 	// controls
     mParams = params::InterfaceGl::create("Controls", vec2(200, 200));
     mParams->addParam("FPS", &fps);
@@ -67,6 +59,9 @@ void _TBOX_PREFIX_App::keyDown( KeyEvent event )
 	if (event.getChar() == 'f') {
 		setFullScreen(!isFullScreen());
 	}
+	else if (event.getChar() == 's') {
+		alfrid::helpers::saveImage();
+	}
 }
 
 void _TBOX_PREFIX_App::update()
@@ -79,8 +74,8 @@ void _TBOX_PREFIX_App::draw()
 	gl::clear();
 
     gl::setMatrices(mCamera);
-	bAxis->draw();
-	bDots->draw();
+	alfrid::helpers::drawAxis();
+	alfrid::helpers::drawDotPlanes();
 
 	mParams->draw();
 }

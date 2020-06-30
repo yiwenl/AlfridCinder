@@ -1,7 +1,11 @@
 #pragma once
 
+#include "cinder/app/App.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Log.h"
+
+#include "cinder/ImageIo.h"
+#include "cinder/Utilities.h"
 
 using namespace ci;
 
@@ -26,5 +30,8 @@ namespace alfrid {
 
 		// line
 		void drawLine(vec3 mA, vec3 mB, vec3 mColor=vec3(1.0), float mOpacity=1.0, float mLineWidth = 1.0f);
+
+		// save capture
+		void saveImage();
 	}
 }
