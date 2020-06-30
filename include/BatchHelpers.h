@@ -100,8 +100,6 @@ namespace alfrid {
             draw(1.0f);
         }
         
-        
-        
         static BatchGridDotsRef create() { return std::make_shared<BatchGridDots>(); }
         
     protected:
