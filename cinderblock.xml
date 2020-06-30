@@ -8,6 +8,7 @@
 	version="1.0"
 	>
 		<headerPattern>include/*.h</headerPattern>
+		<sourcePattern>src/*.cpp</sourcePattern>
     
     <includePath>include</includePath>
 	<includePath>src</includePath>
