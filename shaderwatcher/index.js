@@ -9,6 +9,9 @@ const checkExtension = require('./checkExtension')
 
 const shaderPath = path.resolve(process.cwd(), 'assets')
 
+
+console.log('NODE_PATH', NODE_PATH)
+
 const PATH_SRC = path.resolve(process.cwd(), 'src')
 const TEMPLATE_FOLDER = '/usr/local/lib/node_modules/shaderwatch/templates'
 const TEMPLATE_VERTEX = path.resolve(TEMPLATE_FOLDER, 'basic.vert')
