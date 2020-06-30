@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<template name="Alfrid: Particles" parent="org.libcinder.apptemplates.basicopengl">
+	<requires>co.wensday.alfrid</requires>
+	<source replaceContents="true" replaceName="true">src/_TBOX_PREFIX_App.cpp</source>
+	<asset>assets/particle.png</asset>
+	<asset>assets/update.vert</asset>
+	<asset>assets/render.vert</asset>
+	<asset>assets/render.frag</asset>
+</template>
+</cinder>

@@ -3,6 +3,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/Camera.h"
 #include "cinder/params/Params.h"
+#include "cinder/Log.h"
 #include "Helpers.h"
 #include "OrbitalControl.h"
 
@@ -20,6 +21,7 @@ public:
 	void keyDown( KeyEvent event ) override;
 	void update() override;
 	void draw() override;
+	void resize() override;
 
 private:
 	// camera
@@ -86,6 +88,10 @@ void _TBOX_PREFIX_App::draw()
 	alfrid::helpers::drawDotPlanes();
 
 	mParams->draw();
+}
+
+void _TBOX_PREFIX_App::resize() {
+	mCamera.setPerspective(75, getWindowAspectRatio(), .1f, 100.0f);
 }
 
 CINDER_APP( _TBOX_PREFIX_App, RendererGl( RendererGl::Options().msaa( 4 ) ), prepareSettings )
