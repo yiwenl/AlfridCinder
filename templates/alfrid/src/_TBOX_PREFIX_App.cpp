@@ -31,6 +31,14 @@ private:
     float fps = 0.0f;
 };
 
+
+void prepareSettings( _TBOX_PREFIX_App::Settings *settings) {
+    settings->setHighDensityDisplayEnabled();
+    settings->setMultiTouchEnabled( false );
+    settings->setTitle("_TBOX_PREFIX_App");
+}
+
+
 void _TBOX_PREFIX_App::setup()
 {
     setWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -80,4 +88,4 @@ void _TBOX_PREFIX_App::draw()
 	mParams->draw();
 }
 
-CINDER_APP( _TBOX_PREFIX_App, RendererGl )
+CINDER_APP( _TBOX_PREFIX_App, RendererGl( RendererGl::Options().msaa( 4 ) ), prepareSettings )

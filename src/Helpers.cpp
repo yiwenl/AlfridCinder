@@ -1,4 +1,5 @@
 #include "Helpers.h"
+#include "cinder/Log.h"
 
 namespace alfrid {
 
@@ -48,10 +49,8 @@ namespace alfrid {
             time_t now = time(0);
             tm* ltm = localtime(&now);
             string fileName = toString(1900 + ltm->tm_year) + '.' + toString(1 + ltm->tm_mon) + '.' + toString(ltm->tm_mday) + '-' + toString(1 + ltm->tm_hour) + '.' + toString(1 + ltm->tm_min) + '.' + toString(1 + ltm->tm_sec) + ".png";
-            string path = string(getenv("USERPROFILE")) + "\\Downloads\\" + fileName;
-
             writeImage(getHomeDirectory() / "Downloads" / fileName, copyWindowSurface());
-
+            CI_LOG_I("Save screenshot : " << fileName);
         }
 
         void drawBall(vec3 mPos, vec3 mSize, vec3 mColor, float mOpacity)
