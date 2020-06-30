@@ -1,3 +1,4 @@
+module.exports = `
 #version 150 core
 
 in vec4 ciPosition;
@@ -18,3 +19,4 @@ void main() {
     vTexCoord0 		= ciTexCoord0;
 
 }
+`

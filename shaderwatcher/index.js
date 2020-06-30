@@ -4,24 +4,16 @@ const fs = require('fs-extra')
 const path = require('path')
 const findFolder = require('./find-folder')
 const watcher = require('./watch')
-const copyFile = require('./copy-file')
+// const copyFile = require('./copy-file')
 const checkExtension = require('./checkExtension')
-
+const vsTemplate = require('./templates/basic.vert')
+const fsTemplate = require('./templates/copy.frag')
 const shaderPath = path.resolve(process.cwd(), 'assets')
-
-
-console.log('NODE_PATH', NODE_PATH)
-
 const PATH_SRC = path.resolve(process.cwd(), 'src')
-const TEMPLATE_FOLDER = '/usr/local/lib/node_modules/shaderwatch/templates'
-const TEMPLATE_VERTEX = path.resolve(TEMPLATE_FOLDER, 'basic.vert')
-const TEMPLATE_FRAGMENT = path.resolve(TEMPLATE_FOLDER, 'copy.frag')
-// const regShader = /[A-Za-z0-9]+\.(vert|frag)/g
 const regShader = /[^\"|\s]+\.(vert|frag)/g
 
-console.log('start shader watch', shaderPath)
-
 const watcherViews = watcher([PATH_SRC])
+
 
 function startWatch () {
   watcherViews.on('all', (event, file) => {
@@ -96,14 +88,14 @@ function generateShader (mName) {
 
 function generateVertexShader (mName) {
   console.log('Generate vertex shader :', mName)
-  copyFile(TEMPLATE_VERTEX, path.resolve(shaderPath, mName), (err) => {
+  fs.writeFile(path.resolve(shaderPath, mName), vsTemplate, (err) => {
     if (err) console.log('Err', err)
   })
 }
 
 function generateFragmentShader (mName) {
   console.log('Generate fragment shader : ', mName)
-  copyFile(TEMPLATE_FRAGMENT, path.resolve(shaderPath, mName), (err) => {
+  fs.writeFile(path.resolve(shaderPath, mName), fsTemplate, (err) => {
     if (err) console.log('Err', err)
   })
 }
