@@ -10,7 +10,7 @@ const vsTemplate = require('./templates/basic.vert')
 const fsTemplate = require('./templates/copy.frag')
 const shaderPath = path.resolve(process.cwd(), 'assets')
 const PATH_SRC = path.resolve(process.cwd(), 'src')
-const regShader = /[^\"|\s]+\.(vert|frag)/g
+const regShader = /[^\"|\s|)]+\.(vert|frag)/g
 
 const watcherViews = watcher([PATH_SRC])
 

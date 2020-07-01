@@ -113,9 +113,6 @@ void _TBOX_PREFIX_App::initParticles() {
 	vector<Particle> particles;
 	particles.assign(NUM_PARTICLES, Particle());
 
-	float w = 0.2 * 0.5f;
-	float h = 0.294 * 0.5f;
-
 	for (int i = 0; i < particles.size(); i++) {
 		vec3 pos = randVec3() * randFloat();
 		auto& p = particles.at(i);
